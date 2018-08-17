@@ -1,0 +1,1 @@
+php vendor/doctrine/orm/bin/doctrine orm:generate-entities --generate-annotations=true src/entities

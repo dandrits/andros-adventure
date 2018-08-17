@@ -1,0 +1,1 @@
+php vendor/doctrine/orm/bin/doctrine orm:convert-mapping -f --from-database  annotation src/entities

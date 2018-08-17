@@ -1,0 +1,32 @@
+<?php
+/**
+ *
+ * @version 1.0
+ * @author  Dimitris Andritsakis
+ * @package SRC
+ */
+
+//php configuration
+set_time_limit(0);
+error_reporting(E_ALL ^ E_DEPRECATED ^ E_NOTICE ^ E_WARNING); //^ E_DEPRECATED ^ E_NOTICE ^ E_WARNING
+ini_set('display_errors','On');
+ini_set('memory_limit','1024M');
+
+//pdo connection settings
+$conOptions = array(
+    "Driver"=>"pdo_mysql",
+    "Host"=>"",
+    "Port"=>3306,
+    "Database"=>"",
+    "Username"=>"",
+    "Password"=>"",
+    "Charset"=>"UTF8"
+);
+
+  $ServerOptions = array(
+      "ApiDocumentationLink" => "http://localhost/docs/",
+      "InternalServer" => "http://localhost/api/"
+  );
+
+  $salt = '1d6621f92403kw9657381245cdf3c4';
+?>
