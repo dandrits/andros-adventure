@@ -7,10 +7,9 @@ class OAuthClientRepository extends EntityRepository implements ClientCredential
 {
     public function getClientDetails($clientName)
     {
-        
+
         global $entityManager;
-        
-        $client = $entityManager->getRepository('OAuthClient')->findOneBy(['client_name' => $clientName]);
+        $client = $entityManager->getRepository('TblOauthClients')->findOneBy(['client_name' => $clientName]);
         if ($client) {
             $client = $client->toArray();
         }
@@ -21,19 +20,17 @@ class OAuthClientRepository extends EntityRepository implements ClientCredential
     {
         
         global $entityManager;
-        
-        $client = $entityManager->getRepository('OAuthClient')->findOneBy(['id' => $clientId]);
+        $client = $entityManager->getRepository('TblOauthClients')->findOneBy(['id' => $clientId]);
         if ($client) {
             $client = $client->toArray();
         }
         return $client;
     }
-    
+
     public function checkClientCredentials($clientName, $clientSecret = NULL)
     {
         global $entityManager;
-        
-        $client = $entityManager->getRepository('OAuthClient')->findOneBy(['client_name' => $clientName]);
+        $client = $entityManager->getRepository('TblOauthClients')->findOneBy(['client_name' => $clientName]);
         if ($client) {
             return $client->verifyClientSecret($clientSecret);
         }

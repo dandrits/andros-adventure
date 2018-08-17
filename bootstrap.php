@@ -42,5 +42,5 @@ $entityManager = EntityManager::create($conn, $config);
 $platform = $entityManager->getConnection()->getDatabasePlatform();
 $platform->registerDoctrineTypeMapping('enum', 'string');
 
-// $clientStorage  = $entityManager->getRepository('OAuthClient');
+$clientStorage  = $entityManager->getRepository('TblOauthClients');
 ?>

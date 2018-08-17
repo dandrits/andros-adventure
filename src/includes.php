@@ -31,6 +31,8 @@ require_once('exceptions/ExceptionMessages.php');
 require_once('exceptions/ExceptionManager.php');
 
 //Rest
+require_once('../api/get/GetVerifyToken.php');
+require_once('../api/post/PostToken.php');
 require_once('../api/post/PostCheckCredentials.php');
 
 //Extend
