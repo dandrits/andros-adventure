@@ -13,9 +13,6 @@ require_once('controllers.php');
 
 // Doctrine & Entities autoloading
 require_once ('../bootstrap.php');
-spl_autoload_register(function($class) {
-    include 'entities/' . $class . '.php';
-});
 
 //Classes
 require_once('classes/ApiFunctions.php');

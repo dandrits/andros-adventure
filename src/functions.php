@@ -21,4 +21,10 @@ function hasher($param=''){
     return hash('sha512',$param.$salt);
 }
 
+function validateHasher($param='', $db_hash){
+    global $salt;
+    $pass =  hash('sha512',$param.$salt);
+    return $is_valid = ($pass == $db_hash) ? true : false;
+}
+
 ?>

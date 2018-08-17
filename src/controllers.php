@@ -101,4 +101,65 @@ function UserCredentialsController(){
     ApiFunctions::ApiResponse($result , $logExport);
 }
 
+function ValidateToken(){
+
+    try {
+
+        global $server,$app;
+        $params = ApiFunctions::loadParameters();
+
+        if (!$server->verifyResourceRequest(OAuth2\Request::createFromGlobals()))
+            throw new Exception(ExceptionMessages::TokenError, ExceptionCodes::TokenError);
+        else{
+           $logExport['RESPONSE-CHECK TOKEN'] = array('Message' => ExceptionMessages::NoErrors,
+                                                        'Status' => ExceptionCodes::NoErrors,
+                                                        'TokenValidateData' => $params
+                                                       );
+
+            ApiFunctions::ApiLog($logExport);
+            return;
+        }
+    } catch (Exception $e) {
+        //uncomment to view original error
+        //$server->getResponse()->send();
+        $result["message"] = "[".$app->request()->getMethod()."][".__FUNCTION__."]:".$e->getMessage();
+        $result["status"] = $e->getCode();
+        echo json_encode($result);
+
+        $logExport['RESPONSE-CHECK TOKEN'] = array('Message' => $result["message"],
+                                                    'Status' => $result["status"],
+                                                    'TokenValidateData' => $params
+                                                   );
+
+        ApiFunctions::ApiLog($logExport);
+        $app->stop();
+    }
+}
+
+function TokenController(){
+
+    $result = PostToken();
+
+    $logExport['RESPONSE'] = array('Message' => $result["message"],
+                                    'Status' => $result["status"],
+                                    'UserParams' => $result["parameters"],
+                                    'TokenResponseData' => $result["token"],
+                                    'ClientResponseData' => $result["checkClientData"]
+                                   );
+
+    ApiFunctions::ApiResponse($result , $logExport);
+}
+
+function VerifyTokenController(){
+
+    $result = GetVerifyToken();
+
+    $logExport['RESPONSE'] = array('Message' => $result["message"],
+                                    'Status' => $result["status"],
+                                    'UserParams' => $result["parameters"],
+                                    'VerifyTokenResponseData' => $result["verify"]
+                                   );
+
+    ApiFunctions::ApiResponse($result , $logExport);
+}
 ?>

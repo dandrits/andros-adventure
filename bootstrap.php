@@ -13,6 +13,12 @@ OAuth2\Autoloader::register();
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
+// Doctrine & Entities autoloading
+spl_autoload_register(function($class) {
+    include 'src/entities/' . $class . '.php';
+    include 'src/oauth-repositories/' . $class . '.php';
+});
+
 // Create a simple "default" Doctrine ORM configuration for Annotations
 $isDevMode = true;
 $paths = array(__DIR__."/src/entities");
@@ -36,4 +42,5 @@ $entityManager = EntityManager::create($conn, $config);
 $platform = $entityManager->getConnection()->getDatabasePlatform();
 $platform->registerDoctrineTypeMapping('enum', 'string');
 
+// $clientStorage  = $entityManager->getRepository('OAuthClient');
 ?>
