@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "c6e7422a-0b90-408f-b88b-a9125fc76562",
+		"name": "andros",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost/api/appointments",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"admin\",\"password\":\"admin\",\"id\":14}"
+				},
+				"url": {
+					"raw": "https://localhost/api/appointments",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"appointments"
+					]
+				},
+				"description": "login"
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost/api/lappointments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost/api/appointments",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"appointments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost/api/appointments",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "jhty8878",
+							"sessionValue": "Test Admin",
+							"type": "text"
+						},
+						{
+							"key": "start",
+							"value": "2018-08-23 01:00:00",
+							"sessionValue": "2018-08-19 00:00:00`",
+							"type": "text"
+						},
+						{
+							"key": "end",
+							"value": "2018-08-24 02:00:00",
+							"sessionValue": "2018-08-19 02:00:00",
+							"type": "text"
+						},
+						{
+							"key": "color",
+							"value": "jk234hkj23h4",
+							"sessionValue": "yellow",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "a@b.com",
+							"sessionValue": "a@b.com",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "sdf!@#",
+							"sessionValue": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost/api/appointments",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"appointments"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
