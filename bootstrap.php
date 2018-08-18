@@ -7,7 +7,6 @@
  */
 
 require_once "vendor/autoload.php";
-OAuth2\Autoloader::register();
 
 // bootstrap.php
 use Doctrine\ORM\Tools\Setup;
@@ -40,6 +39,4 @@ $entityManager = EntityManager::create($conn, $config);
 //added enum fields to doctrine
 $platform = $entityManager->getConnection()->getDatabasePlatform();
 $platform->registerDoctrineTypeMapping('enum', 'string');
-
-$clientStorage  = $entityManager->getRepository('TblOauthClients');
 ?>
