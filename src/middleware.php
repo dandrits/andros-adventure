@@ -13,4 +13,5 @@ ApiGeneralControllers::FunctionMethodNotFound();
 //api end-points
 $app->map('/login', UserCredentialsController)->via('POST');
 $app->map('/appointments', GetAppointmentsController)->via('GET');
+$app->map('/appointments', PostAppointmentsController)->via('POST');
 ?>

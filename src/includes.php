@@ -33,6 +33,7 @@ require_once('exceptions/ExceptionManager.php');
 //Rest
 require_once('../api/post/PostCheckCredentials.php');
 require_once('../api/get/GetAppointments.php');
+require_once('../api/post/PostAppointments.php');
 
 //Extend
 require_once('../extend/classes/ExtendUserRoles.php');

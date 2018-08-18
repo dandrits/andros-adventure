@@ -27,4 +27,12 @@ function validateHasher($param='', $db_hash){
     return $is_valid = ($pass == $db_hash) ? true : false;
 }
 
+function fixForDb($string){
+		return str_replace("\\", "", str_replace('"', '\"', str_replace("'", "\'", trim($string))));
+	}
+
+function toDatetime($date){
+  $datetime = new \DateTime($date);
+  return $datetime;
+}
 ?>
