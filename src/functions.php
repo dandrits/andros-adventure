@@ -35,9 +35,4 @@ function toDatetime($date){
   $datetime = new \DateTime($date);
   return $datetime;
 }
-
-function isAdmin($uSuperuser){
-  if($uSuperuser===1) return true;
-  else return false;
-}
 ?>

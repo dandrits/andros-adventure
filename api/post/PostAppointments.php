@@ -10,7 +10,7 @@ header("Content-Type: text/html; charset=utf-8");
 
 function PostAppointments ( $id,$name,$start,$end,$color,$email,$phone ){
 
-    global $app,$entityManager,$salt;
+    global $app,$entityManager;
 
     $result = [];
     $params = ApiFunctions::loadParameters();

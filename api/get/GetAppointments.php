@@ -10,7 +10,7 @@ header("Content-Type: text/html; charset=utf-8");
 
 function GetAppointments ( ){
 
-    global $app,$entityManager,$salt;
+    global $app,$entityManager;
 
     $result = [];
 
