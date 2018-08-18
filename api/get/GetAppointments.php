@@ -3,7 +3,7 @@
  *
  * @version 1.1
  * @author  Dimitris Andritsakis
- * @package POST
+ * @package GET
  */
 
 header("Content-Type: text/html; charset=utf-8");

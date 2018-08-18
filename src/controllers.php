@@ -2,19 +2,19 @@
 /**
  *
  * @version 1.0
- * @author  Dimitris Andritsakis
+ * @author  Kostas Tsiolis
  * @package SRC
  */
-function UserCredentialsController(){
+function DeleteAppointmentController(){
 
     $params = ApiFunctions::loadParameters();
-    $result = PostCheckCredentials($params["username"],
-                                   $params["password"]
-                                  );
+    $result = DeleteAppointment($params["username"],
+                                $params["password"],
+                                $params["id"]
+                                );
 
     $logExport['RESPONSE'] = array('Message' => $result["message"],
-                                    'Status' => $result["status"],
-                                    'UserParams' => $result["parameters"]
+                                    'Status' => $result["status"]
                                    );
 
     ApiFunctions::ApiResponse($result , $logExport);

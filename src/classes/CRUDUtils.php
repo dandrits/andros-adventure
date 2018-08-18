@@ -3,8 +3,8 @@
 /**
  * This file is part of the slim-api-crud package.
  * 
- * @author  Dimitris Andritsakis <andritsakisd@gmail.com>
- * @license The MIT License (MIT) Copyright (c) 2015 Dimitris Andritsakis
+ * @author  Kostas Tsiolis <tsiolis.kostas@gmail.com>
+ * @license The MIT License (MIT) Copyright (c) 2015 Kostas Tsiolis
  * @version 2.6
  * @package Classes
  */

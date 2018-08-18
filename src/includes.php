@@ -2,7 +2,7 @@
 /**
  *
  * @version 1.0
- * @author  Dimitris Andritsakis
+ * @author  Kostas Tsiolis
  * @package SRC
  */
 
@@ -31,7 +31,7 @@ require_once('exceptions/ExceptionMessages.php');
 require_once('exceptions/ExceptionManager.php');
 
 //Rest
-require_once('../api/post/PostCheckCredentials.php');
+require_once('../api/delete/DeleteAppointment.php');
 require_once('../api/get/GetAppointments.php');
 require_once('../api/post/PostAppointments.php');
 

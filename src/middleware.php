@@ -2,7 +2,7 @@
 /**
  *
  * @version 1.0
- * @author  Dimitris Andritsakis
+ * @author  Kostas Tsiolis
  * @package SRC
  */
 
@@ -11,7 +11,7 @@ ApiGeneralControllers::ApiDocumentation();
 ApiGeneralControllers::FunctionMethodNotFound();
 
 //api end-points
-$app->map('/login', UserCredentialsController)->via('POST');
+$app->map('/appointments', DeleteAppointmentController)->via('DELETE');
 $app->map('/appointments', GetAppointmentsController)->via('GET');
 $app->map('/appointments', PostAppointmentsController)->via('POST');
 ?>
