@@ -16,7 +16,6 @@ use Doctrine\ORM\EntityManager;
 // Doctrine & Entities autoloading
 spl_autoload_register(function($class) {
     include 'src/entities/' . $class . '.php';
-    include 'src/oauth-repositories/' . $class . '.php';
 });
 
 // Create a simple "default" Doctrine ORM configuration for Annotations
