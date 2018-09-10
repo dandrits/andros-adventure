@@ -34,6 +34,7 @@ require_once('exceptions/ExceptionManager.php');
 require_once('../api/delete/DeleteAppointment.php');
 require_once('../api/get/GetAppointments.php');
 require_once('../api/post/PostAppointments.php');
+require_once('../api/post/PostUsers.php');
 
 //Extend
 require_once('../extend/classes/ExtendUserRoles.php');

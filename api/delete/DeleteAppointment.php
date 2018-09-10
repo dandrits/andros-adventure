@@ -8,30 +8,32 @@
 
 header("Content-Type: text/html; charset=utf-8");
 
-function DeleteAppointment ( $username, $password_hash, $id ){
+function DeleteAppointment ( $activkey, $id ){
 
     global $app,$entityManager;
 
     $result = [];
     $params = ApiFunctions::loadParameters();
-    if(!is_null($params['id']) && (int)$params['id']>=1 && (int)$params['id']<=99999999999){
-      try {
-        $sql = "SELECT * FROM tbl_users WHERE username='".$username."' AND password='".hasher($password_hash)."';";
-        $stmt = $entityManager->getConnection()->prepare($sql);
-        $stmt->execute();
-        $apData = $stmt->fetchAll();
+    try {
+      if($id!=''&&$activkey!=''){
+	$qb = $entityManager->createQueryBuilder();
+        $qb->select('a')
+          ->from('Appointments', 'a')
+          ->where('a.id = :id')
+          ->setParameter('id',$id);
+        $apData = $qb->getQuery()->getResult();
 
         $flag = ($apData!=[]&&$apData!=null&&is_array($apData))?true:false;
         if($flag){
-          // user authenticated
-          $sql2 = "SELECT * FROM tbl_appointments WHERE id=".$params['id'].";";
-          $stmt2 = $entityManager->getConnection()->prepare($sql2);
-          $stmt2->execute();
-          $apData2 = $stmt2->fetchAll();
-
-          if($apData2!=[]&&$apData2!=null&&is_array($apData2)&&$apData[0]['superuser']==1&&$apData[0]['status']==1){
+	$qb2 = $entityManager->createQueryBuilder();
+        $qb2->select('u')
+            ->from('Users', 'u')
+            ->where('u.activkey = :key')
+            ->setParameter('key',$activkey);
+        $apData2 = $qb2->getQuery()->getResult();
+          if($apData2!=[]&&$apData2!=null&&is_array($apData2)&&$apData2[0]->getSuperuser()==1&&$apData2[0]->getStatus()==1){
             // user is active & admin and can delete
-            $appointment = $entityManager->getReference('TblAppointments', $params['id']);
+            $appointment = $entityManager->getReference('Appointments', $id);
             $entityManager->remove($appointment);
             $entityManager->flush();
             $result["status"] = ExceptionCodes::NoErrors;
@@ -42,17 +44,16 @@ function DeleteAppointment ( $username, $password_hash, $id ){
           }
         }else{
           $result["status"] = ExceptionCodes::NoErrors;
-          $result["message"] = "You must authenticate";
+          $result["message"] = "Invalid appointment id";
         }
+       }else{
+	$result["status"] = '800';
+	$result["message"] = 'Id and/or activkey must not be empty!';
+       }
       } catch (Exception $e) {
           $result["status"] = $e->getCode();
           $result["message"] = "[".$result["method"]."][".$result["function"]."]:".$e->getMessage();
       }
-    }
-    else {
-      $result["status"] = ExceptionCodes::NoErrors;
-      $result["message"] = "Appointement id must be a number: 0 < id < 99999999999";
-    }
     return $result;
 }
 ?>

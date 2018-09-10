@@ -17,13 +17,14 @@ function PostAppointments ( $id,$name,$start,$end,$color,$email,$phone ){
     if($params['start']<$params['end']){
       try {
         // create new appointment
-        $appointment = new \TblAppointments();
+        $appointment = new \Appointments();
         $appointment->setName(fixForDb($params['name']));
         $appointment->setStart(toDatetime($params['start']));
         $appointment->setEnd(toDatetime($params['end']));
         $appointment->setColor(fixForDb($params['color']));
         $appointment->setEmail(fixForDb($params['email']));
         $appointment->setPhone(fixForDb($params['phone']));
+	$appointment->setPersons(fixForDb($params['persons']));
         $entityManager->persist($appointment);
         $entityManager->flush($appointment);
       } catch (Exception $e) {
@@ -33,13 +34,20 @@ function PostAppointments ( $id,$name,$start,$end,$color,$email,$phone ){
       // fetch appointments from now on
       $qb = $entityManager->createQueryBuilder();
       $qb->select('m')
-          ->from('TblAppointments', 'm')
+          ->from('Appointments', 'm')
           ->where('m.start >= :start')
           ->setParameter('start', new \DateTime(), \Doctrine\DBAL\Types\Type::DATETIME);
       $apData = $qb->getQuery()->getResult();
       if($apData!=[]&&$apData!=null&&is_array($apData)){
-        foreach ($apData as $apDato) {
-          $result[] = (array)$apDato;
+        foreach ($apData as $key=>$value) {
+          $result[$key]['id'] = $value->getId();
+          $result[$key]['email'] = $value->getEmail();
+          $result[$key]['color'] = $value->getColor();
+          $result[$key]['name'] = $value->getName();
+          $result[$key]['persons'] = $value->getPersons();
+          $result[$key]['phone'] = $value->getPhone();
+          $result[$key]['start'] = $value->getStart();
+          $result[$key]['end'] = $value->getEnd();
         }
       }
     }

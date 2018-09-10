@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "https://localhost/api/appointments",
+			"name": "https://localhost/appointments",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -16,17 +16,27 @@
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": "{\"username\":\"admin\",\"password\":\"admin\",\"id\":14}"
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "activkey",
+							"value": "1a570eb4147bb7d0e9913e557823789163b01b1835ce081a45eaf45054c6adaa3ffc0ec05d13c9f9bdf9dbaf7ce298f569ab3d06fdd400a24a9b722412cfbc45",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "5",
+							"type": "text"
+						}
+					]
 				},
 				"url": {
-					"raw": "https://localhost/api/appointments",
+					"raw": "https://localhost/appointments",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"api",
 						"appointments"
 					]
 				},
@@ -41,13 +51,12 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "https://localhost/api/appointments",
+					"raw": "https://localhost/appointments",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"api",
 						"appointments"
 					]
 				}
@@ -55,7 +64,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost/api/appointments",
+			"name": "https://localhost/appointments",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -65,50 +74,85 @@
 						{
 							"key": "name",
 							"value": "jhty8878",
-							"sessionValue": "Test Admin",
 							"type": "text"
 						},
 						{
 							"key": "start",
-							"value": "2018-08-23 01:00:00",
-							"sessionValue": "2018-08-19 00:00:00`",
+							"value": "2018-09-23 01:00:00",
 							"type": "text"
 						},
 						{
 							"key": "end",
-							"value": "2018-08-24 02:00:00",
-							"sessionValue": "2018-08-19 02:00:00",
+							"value": "2018-09-24 02:00:00",
 							"type": "text"
 						},
 						{
 							"key": "color",
 							"value": "jk234hkj23h4",
-							"sessionValue": "yellow",
 							"type": "text"
 						},
 						{
 							"key": "email",
 							"value": "a@b.com",
-							"sessionValue": "a@b.com",
 							"type": "text"
 						},
 						{
 							"key": "phone",
 							"value": "sdf!@#",
-							"sessionValue": "123456",
+							"type": "text"
+						},
+						{
+							"key": "persons",
+							"value": "1",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "https://localhost/api/appointments",
+					"raw": "https://localhost/appointments",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"api",
 						"appointments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/users",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/users",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"users"
 					]
 				}
 			},

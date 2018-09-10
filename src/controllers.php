@@ -8,8 +8,7 @@
 function DeleteAppointmentController(){
 
     $params = ApiFunctions::loadParameters();
-    $result = DeleteAppointment($params["username"],
-                                $params["password"],
+    $result = DeleteAppointment($params["activkey"],
                                 $params["id"]
                                 );
 
@@ -42,6 +41,20 @@ function PostAppointmentsController(){
                                $params["email"],
                                $params["phone"]
                               );
+
+    $logExport['RESPONSE'] = array('Message' => $result["message"],
+                                    'Status' => $result["status"]
+                                   );
+
+    ApiFunctions::ApiResponse($result , $logExport);
+}
+
+function PostUsersController(){
+
+    $params = ApiFunctions::loadParameters();
+    $result = PostUsers($params["username"],
+                        $params["password"]
+                       );
 
     $logExport['RESPONSE'] = array('Message' => $result["message"],
                                     'Status' => $result["status"]

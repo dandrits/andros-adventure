@@ -14,4 +14,5 @@ ApiGeneralControllers::FunctionMethodNotFound();
 $app->map('/appointments', DeleteAppointmentController)->via('DELETE');
 $app->map('/appointments', GetAppointmentsController)->via('GET');
 $app->map('/appointments', PostAppointmentsController)->via('POST');
+$app->map('/users', PostUsersController)->via('POST');
 ?>

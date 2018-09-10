@@ -22,15 +22,15 @@ function GetAppointments ( ){
           ->setParameter('start', new \DateTime(), \Doctrine\DBAL\Types\Type::DATETIME);
       $apData = $qb->getQuery()->getResult();
       if($apData!=[]&&$apData!=null&&is_array($apData)){
-        foreach ($apData as $apDato) {
-          $result['id'] = $apDato->getId();
-	  $result['email'] = $apDato->getEmail();
-	  $result['color'] = $apDato->getColor();
-	  $result['name'] = $apDato->getName();
-	  $result['persons'] = $apDato->getPersons();
-	  $result['phone'] = $apDato->getPhone();
-	  $result['start'] = $apDato->getStart();
-	  $result['end'] = $apDato->getEnd();
+        foreach ($apData as $key=>$value) {
+          $result[$key]['id'] = $value->getId();
+	  $result[$key]['email'] = $value->getEmail();
+	  $result[$key]['color'] = $value->getColor();
+	  $result[$key]['name'] = $value->getName();
+	  $result[$key]['persons'] = $value->getPersons();
+	  $result[$key]['phone'] = $value->getPhone();
+	  $result[$key]['start'] = $value->getStart();
+	  $result[$key]['end'] = $value->getEnd();
         }
       }
     } catch (Exception $e) {
