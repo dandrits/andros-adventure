@@ -5,12 +5,12 @@
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TblUsers
+ * Users
  *
- * @ORM\Table(name="tbl_users", uniqueConstraints={@ORM\UniqueConstraint(name="username", columns={"username"}), @ORM\UniqueConstraint(name="email", columns={"email"})}, indexes={@ORM\Index(name="status", columns={"status"}), @ORM\Index(name="superuser", columns={"superuser"})})
+ * @ORM\Table(name="users", uniqueConstraints={@ORM\UniqueConstraint(name="username", columns={"username"}), @ORM\UniqueConstraint(name="email", columns={"email"})}, indexes={@ORM\Index(name="status", columns={"status"}), @ORM\Index(name="superuser", columns={"superuser"})})
  * @ORM\Entity
  */
-class TblUsers
+class Users
 {
     /**
      * @var integer
@@ -94,7 +94,7 @@ class TblUsers
      *
      * @param string $username
      *
-     * @return TblUsers
+     * @return Users
      */
     public function setUsername($username)
     {
@@ -118,7 +118,7 @@ class TblUsers
      *
      * @param string $password
      *
-     * @return TblUsers
+     * @return Users
      */
     public function setPassword($password)
     {
@@ -142,7 +142,7 @@ class TblUsers
      *
      * @param string $email
      *
-     * @return TblUsers
+     * @return Users
      */
     public function setEmail($email)
     {
@@ -166,7 +166,7 @@ class TblUsers
      *
      * @param string $activkey
      *
-     * @return TblUsers
+     * @return Users
      */
     public function setActivkey($activkey)
     {
@@ -190,7 +190,7 @@ class TblUsers
      *
      * @param \DateTime $createAt
      *
-     * @return TblUsers
+     * @return Users
      */
     public function setCreateAt($createAt)
     {
@@ -214,7 +214,7 @@ class TblUsers
      *
      * @param \DateTime $lastvisitAt
      *
-     * @return TblUsers
+     * @return Users
      */
     public function setLastvisitAt($lastvisitAt)
     {
@@ -238,7 +238,7 @@ class TblUsers
      *
      * @param integer $superuser
      *
-     * @return TblUsers
+     * @return Users
      */
     public function setSuperuser($superuser)
     {
@@ -262,7 +262,7 @@ class TblUsers
      *
      * @param integer $status
      *
-     * @return TblUsers
+     * @return Users
      */
     public function setStatus($status)
     {

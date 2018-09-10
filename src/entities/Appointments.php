@@ -5,12 +5,12 @@
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TblAppointments
+ * Appointments
  *
- * @ORM\Table(name="tbl_appointments")
+ * @ORM\Table(name="appointments")
  * @ORM\Entity
  */
-class TblAppointments
+class Appointments
 {
     /**
      * @var integer
@@ -63,6 +63,13 @@ class TblAppointments
      */
     private $phone;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="persons", type="integer", nullable=false)
+     */
+    private $persons;
+
 
 
     /**
@@ -80,7 +87,7 @@ class TblAppointments
      *
      * @param string $name
      *
-     * @return TblAppointments
+     * @return Appointments
      */
     public function setName($name)
     {
@@ -104,7 +111,7 @@ class TblAppointments
      *
      * @param \DateTime $start
      *
-     * @return TblAppointments
+     * @return Appointments
      */
     public function setStart($start)
     {
@@ -128,7 +135,7 @@ class TblAppointments
      *
      * @param \DateTime $end
      *
-     * @return TblAppointments
+     * @return Appointments
      */
     public function setEnd($end)
     {
@@ -152,7 +159,7 @@ class TblAppointments
      *
      * @param string $color
      *
-     * @return TblAppointments
+     * @return Appointments
      */
     public function setColor($color)
     {
@@ -176,7 +183,7 @@ class TblAppointments
      *
      * @param string $email
      *
-     * @return TblAppointments
+     * @return Appointments
      */
     public function setEmail($email)
     {
@@ -200,7 +207,7 @@ class TblAppointments
      *
      * @param string $phone
      *
-     * @return TblAppointments
+     * @return Appointments
      */
     public function setPhone($phone)
     {
@@ -217,5 +224,29 @@ class TblAppointments
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Set persons
+     *
+     * @param integer $persons
+     *
+     * @return Appointments
+     */
+    public function setPersons($persons)
+    {
+        $this->persons = $persons;
+
+        return $this;
+    }
+
+    /**
+     * Get persons
+     *
+     * @return integer
+     */
+    public function getPersons()
+    {
+        return $this->persons;
     }
 }

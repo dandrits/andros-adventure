@@ -17,13 +17,20 @@ function GetAppointments ( ){
     try {
       $qb = $entityManager->createQueryBuilder();
       $qb->select('m')
-          ->from('TblAppointments', 'm')
+          ->from('Appointments', 'm')
           ->where('m.start >= :start')
           ->setParameter('start', new \DateTime(), \Doctrine\DBAL\Types\Type::DATETIME);
       $apData = $qb->getQuery()->getResult();
       if($apData!=[]&&$apData!=null&&is_array($apData)){
         foreach ($apData as $apDato) {
-          $result[] = (array)$apDato;
+          $result['id'] = $apDato->getId();
+	  $result['email'] = $apDato->getEmail();
+	  $result['color'] = $apDato->getColor();
+	  $result['name'] = $apDato->getName();
+	  $result['persons'] = $apDato->getPersons();
+	  $result['phone'] = $apDato->getPhone();
+	  $result['start'] = $apDato->getStart();
+	  $result['end'] = $apDato->getEnd();
         }
       }
     } catch (Exception $e) {
